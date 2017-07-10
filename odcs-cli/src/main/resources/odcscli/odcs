@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+""" ODCS CLI main runner script """
+
+import sys
+
+def main():
+    try:
+        from odcscliscript import odcscli        
+        return odcscli.main()
+    except ImportError as e:
+        print(e)
+        print("'odcs' command not found. Please check and update PATH environment variable with the correct Python installation path.")
+
+if __name__ == '__main__':
+
+     req_version = (3,3)
+     cur_version = sys.version_info
+
+     if cur_version >= req_version:
+        main()
+     else:
+        print("")
+        print("")
+        print("Please upgrade Python to version 3.3+. If already on 3.3+ version,")
+        print("please update the PATH environment variable with the correct Python installation path.")
+        print("")
+

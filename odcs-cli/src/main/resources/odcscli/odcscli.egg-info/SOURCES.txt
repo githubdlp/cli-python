@@ -1,0 +1,15 @@
+README.rst
+odcs
+odcs.cmd
+setup.py
+odcscli.egg-info/PKG-INFO
+odcscli.egg-info/SOURCES.txt
+odcscli.egg-info/dependency_links.txt
+odcscli.egg-info/not-zip-safe
+odcscli.egg-info/requires.txt
+odcscli.egg-info/top_level.txt
+odcscliscript/__init__.py
+odcscliscript/actionhandler.py
+odcscliscript/messages.py
+odcscliscript/odcscli.py
+odcscliscript/utils.py

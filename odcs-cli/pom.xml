@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.dlp.trial</groupId>
+    <artifactId>odcs-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../odcs-parent/pom.xml</relativePath>
+  </parent>
+  
+  <artifactId>odcs-cli</artifactId>
+  <name>odcs cli</name>
+  <packaging>pom</packaging>
+  
+  <properties>
+		<odcscli.name>odcscli</odcscli.name>
+		<odcscli.version>0.1</odcscli.version>
+	</properties>
+  
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>python</executable>
+							<workingDirectory>src/main/resources/odcscli/</workingDirectory>
+							<arguments>
+								<argument>setup.py</argument>
+								<argument>sdist</argument>
+								<argument>--formats=zip</argument>
+								<argument>--dist-dir=${project.build.directory}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+				<executions>
+					<execution>
+						<id>install-zip</id>
+						<phase>install</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<configuration>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${odcscli.name}</artifactId>
+							<version>${odcscli.version}</version>
+							<packaging>zip</packaging>
+							<file>${project.build.directory}/${odcscli.name}-${odcscli.version}.zip</file>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
