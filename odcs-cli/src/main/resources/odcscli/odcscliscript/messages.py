@@ -89,7 +89,6 @@ class Messages(object):
     
     # Display msgs for custom commands.
     ODCS_CLI_LONG_CMD_EXEC_INFO_MSG = "This command might take a while to complete...\n"
-    ODCS_CLI_ACCS_PUSH_SIZE_GREATER_THAN_LIMIT_WARNING = "Warning: Local archive size is : %s. For archive sizes greater than %s, uploading the archive to Oracle Storage Cloud and specifying --archive-url parameter is recommended.\n"
     
     # Deprecated msgs for commands.
     ODCS_CLI_DEPRECATED = 'deprecated'
